@@ -1,0 +1,23 @@
+{
+  "name": "EmojiSommelier-API",
+  "version": "1.0.0",
+  "description": "- Laravelで作ります - Emojiのカテゴライズをします",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tam-bourine/EmojiSommelier-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tam-bourine/EmojiSommelier-API/issues"
+  },
+  "homepage": "https://github.com/tam-bourine/EmojiSommelier-API#readme",
+  "devDependencies": {
+    "gitmoji-c": "^0.2.1"
+  }
+}
