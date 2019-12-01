@@ -1,12 +1,6 @@
 {
-    "name": "EmojiSommelier-API",
     "private": true,
-    "version": "1.0.0",
-    "description": "- Laravelで作ります - Emojiのカテゴライズをします",
-    "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "gm": "gitmoji",
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "npm run development -- --watch",
@@ -15,19 +9,7 @@
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/tam-bourine/EmojiSommelier-API.git"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/tam-bourine/EmojiSommelier-API/issues"
-    },
-    "homepage": "https://github.com/tam-bourine/EmojiSommelier-API#readme",
     "devDependencies": {
-        "gitmoji-c": "^0.2.1",
         "axios": "^0.19",
         "cross-env": "^5.1",
         "laravel-mix": "^4.0.7",
