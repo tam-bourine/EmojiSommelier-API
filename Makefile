@@ -13,7 +13,7 @@ laravel:
 	docker-compose restart
 laravel-clone:
 	cp env.example .env
-    cp src/env.example src/.env
+	cp src/env.example src/.env
 php-ash:
 	docker-compose exec php-fpm /bin/ash
 mongo-bash:
