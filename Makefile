@@ -11,9 +11,11 @@ laravel:
 	docker-compose run composer create-project --prefer-dist "laravel/laravel=6.0" .
 	docker-compose run composer require jenssegers/mongodb --ignore-platform-reqs
 	docker-compose restart
-laravel-clone:
-	cp env.example .env
-	cp src/env.example src/.env
+migrate:
+	cp .env.example .env
+	cp src/.env.example src/.env
+	docker-compose exec php-fpm php artisan migrate
+	docker-compose exec php-fpm php artisan key:generate
 php-ash:
 	docker-compose exec php-fpm /bin/ash
 mongo-bash:
