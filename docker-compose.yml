@@ -1,0 +1,64 @@
+version: "3"
+
+services:
+  nginx:
+    build: ./docker/nginx
+    container_name: "${APP_NAME}-nginx"
+    ports:
+      - "8080:80"
+    restart: always
+    volumes:
+      - ./src:/var/www
+    depends_on:
+      - php-fpm
+    links:
+      - mongo
+  php-fpm:
+    build: ./docker/php-fpm
+    container_name: "${APP_NAME}-php-fpm"
+    restart: always
+    volumes:
+      - ./src:/var/www
+    working_dir: /var/www
+    links:
+      - mongo
+    depends_on:
+      - mongo
+  composer:
+    image: composer:1.8
+    container_name: "${APP_NAME}-composer"
+    volumes:
+      - ./src:/var/www
+    working_dir: /var/www
+  mongo:
+    image: 'mongo:4'
+    restart: always
+    container_name: ${APP_NAME}-mongo-v4
+    tty: true
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+      MONGO_INITDB_DATABASE: ${DB_DATABASE}
+    ports:
+      - 27017:27017
+    command: mongod
+    volumes:
+      - ./mongo/data:/data/db
+      - ./mongo/init/:/docker-entrypoint-initdb.d/
+  mongo-express:
+    image: mongo-express
+    restart: always
+    container_name: ${APP_NAME}-mongo-express
+    ports:
+      - 8081:8081
+    links:
+      - mongo
+    environment:
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_ADMINGUSERNAME: ${DB_USERNAME}
+      ME_CONFIG_MONGODB_ADMINGPASSWORD: ${DB_PASSWORD}
+      ME_CONFIG_MONGODB_SERVER: ${APP_NAME}-mongo-v4
+      ME_CONFIG_BASICAUTH_USERNAME: ${DB_USERNAME}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${DB_PASSWORD}
+    depends_on:
+      - mongo
