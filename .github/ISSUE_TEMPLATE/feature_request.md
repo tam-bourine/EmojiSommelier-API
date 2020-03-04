@@ -1,10 +1,7 @@
 ---
-name: 機能要望
-about: プロジェクトのアイディアを提案してください
-title: '[DATE]: [FEATURE NAME]'
+name: '🙏🏽機能リクエスト'
+about: 'feature request'
 labels: 'enhancement'
-assignees: ''
-
 ---
 
 **今後、追加して欲しい希望用件を課題を踏まえて**
